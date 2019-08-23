@@ -12,7 +12,7 @@ export function UserInfoChange() {
 
     return (
         <Wrapper>
-            <input data-test="input-phone" value={user.name} onChange={ event => setUser({...user, name: event.target.value})} />
+            <input value={user.name} onChange={ event => setUser({...user, name: event.target.value})} />
         </Wrapper>
     );
 }
