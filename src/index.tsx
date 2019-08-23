@@ -3,10 +3,45 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './pages/App';
 import * as serviceWorker from './serviceWorker';
+import { MemoryRouter } from 'react-router';
+import once from 'lodash/once';
+import { themeActive } from './themes/light';
+import { ThemeProvider } from 'styled-components';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const deviceReady = once(() => {
+    if ((window as any).isReady) {
+        return;
+    }
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+    (window as any).isReady = true;
+    console.log('✨✨✨ Device ready ✨✨✨');
+
+    window.addEventListener('offline', function() {
+        console.log('offline');
+    });
+
+    window.addEventListener('online', function() {
+        console.log('online');
+    });
+
+    render(App);
+});
+
+if ((window as any).cordova) {
+    document.addEventListener('deviceready', deviceReady);
+} else {
+    deviceReady();
+}
+
 serviceWorker.unregister();
+
+function render(Component: any) {
+    ReactDOM.render(
+        <ThemeProvider theme={themeActive}>
+            <MemoryRouter>
+                <Component />
+            </MemoryRouter>
+        </ThemeProvider>,
+        document.getElementById('root'),
+    );
+}

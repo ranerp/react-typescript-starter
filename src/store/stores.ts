@@ -7,7 +7,7 @@ export interface User {
 
 export const stores = {
     user: createStore<User>({
-        id: 'asd',
-        name: 'qwerty',
+        id: 'K.I.T.T.2000',
+        name: 'Michael Knight',
     }),
 };

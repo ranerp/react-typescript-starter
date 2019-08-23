@@ -1,22 +1,19 @@
 import each from 'lodash/each';
+import { Main } from '../components/Main';
 
-export interface Route {
+export interface AppRoute {
     path: string;
     component: any;
 }
 
-export interface Routes {
-    [route: string]: Route;
-}
-
-export const routes: Routes = {
-    'seedlings': {
-        path: '/seedlings',
-        component: null,
+export const routes: AppRoute[] = [
+    {
+        path: '/main',
+        component: Main,
     },
-};
+];
 
-export function withParams(route: Route, params: string[]) {
+export function withParams(route: AppRoute, params: string[]): AppRoute {
     each(params, (value, key) => (route.path = route.path.replace(`:${key}`, value)));
     return route;
 }
