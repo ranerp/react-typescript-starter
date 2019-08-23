@@ -1,5 +1,5 @@
 import each from 'lodash/each';
-import { Main } from '../components/Main';
+import { Main } from '../pages/Main';
 
 export interface AppRoute {
     path: string;

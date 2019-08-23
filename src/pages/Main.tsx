@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as React from 'react';
-import { UserInfoChange } from './UserInfoChange';
-import { UserInfoView } from './UserInfoView';
+import { UserInfoChange } from '../components/UserInfoChange';
+import { UserInfoView } from '../components/UserInfoView';
 
 const Wrapper = styled.div`
     text-align: center;
